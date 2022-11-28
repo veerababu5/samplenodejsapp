@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   variables:
-    AWS_ACCESS_KEY_ID: "AKIAZ4FC45AGP77UPF3T"
-    AWS_SECRET_ACCESS_KEY: "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"
+    AWS_ACCESS_KEY_ID: "AKIAZ4FC45AGKLBDL4ZP"
+    AWS_SECRET_ACCESS_KEY: "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"
     AWS_DEFAULT_REGION: "us-west-2"
 phases:
   pre_build:
@@ -12,7 +12,7 @@ phases:
       - aws --version
       #- aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 678946465804.dkr.ecr.us-west-2.amazonaws.com
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=678946465804.dkr.ecr.us-west-2.amazonaws.com/node-ecr
+      - REPOSITORY_URI=678946465804.dkr.ecr.us-west-2.amazonaws.com/node-app
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
